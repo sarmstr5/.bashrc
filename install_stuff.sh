@@ -12,7 +12,7 @@ ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 vim +PluginInstall +qall
-run '~/.tmux/plugins/tpm/tpm'
+. ~/.tmux/plugins/tpm/tpm
 exec bash -l
  
  

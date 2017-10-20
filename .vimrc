@@ -67,7 +67,7 @@ set encoding=utf-8
 set number
 
 "python with virtualenv support
-py << EOF
+py3 << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
@@ -93,7 +93,7 @@ if has('gui_running')
 else
   colorscheme murphy
 endif
-call togglebg#map("<F5>") #dark and light mode
+  call togglebg#map("<F5>") "dark and light mode
 
 "system clipboard
 set clipboard=unnamed
