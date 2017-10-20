@@ -5,9 +5,12 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -20,9 +23,6 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 
 " All of your Plugins must be added before the following line
@@ -93,7 +93,7 @@ if has('gui_running')
 else
   colorscheme murphy
 endif
-call togglebg#map("<F5>")
+call togglebg#map("<F5>") #dark and light mode
 
 "system clipboard
 set clipboard=unnamed
