@@ -7,12 +7,16 @@
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-ln -s ~/dotfiles/.vimrc ~/.vimrc
+#TODO check if files exist and create backups if they do
+cp ~/.bashrc ~/original_bashrc
+rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~/.bashrc
+
+ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 vim +PluginInstall +qall
-. ~/.tmux/plugins/tpm/tpm
+.  ~/.tmux/plugins/tpm/tpm
 exec bash -l
  
  
