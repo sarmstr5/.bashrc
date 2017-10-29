@@ -95,6 +95,7 @@ alias hw1='cd Programming_NIX/CS584_DataMining/HW1/KNN_with_amazonreviews/'
 alias p="python3"
 alias hw2='cd Programming_NIX/CS584_DataMining/Drug_Activity_Prediction/'
 alias hw4='cd Programming_NIX/CS584_DataMining/Movie_Recommender_System/'
+alias ghydra='ssh sarmstr5@hydra.cs.gmu.edu'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
