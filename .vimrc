@@ -66,7 +66,8 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 set encoding=utf-8
 set number
 
-"python with virtualenv support
+" python with virtualenv support
+" need to change to py3 depending on vim configuration
 py << EOF
 import os
 import sys
