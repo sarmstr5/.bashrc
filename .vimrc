@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
@@ -93,9 +93,8 @@ if has('gui_running')
 else
   colorscheme murphy
 endif
-call togglebg#map("<F5>") #dark and light mode
+call togglebg#map("<F5>") "dark and light mode
 
 "system clipboard
 set clipboard=unnamed
 imap ;; <Esc>
-	      
