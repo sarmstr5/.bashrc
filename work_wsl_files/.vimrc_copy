@@ -1,0 +1,146 @@
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin() "('~/some/path/here')
+
+
+" alternatively, pass a path where Vundle should install plugins
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"-----------vim settings-------------
+" dougblack.io/words/a-good-vimrc.html
+" -- spacing
+set expandtab
+set tabstop=4
+set softtabstop=4
+
+" --folding
+set foldenable
+set foldmethod=indent
+set foldlevelstart=10 " open most folds by devalt
+set foldnestmax=10 "10 nested fold max
+let g:SimpylFold_docstring_preview=1
+" with spacebar
+nnoremap <space> za 
+
+" --UI
+set encoding=utf-8
+set number " line numbers
+set showcmd " shows command in bottom bar
+set cursorline " highlights currentline
+set wildmenu " autocomplete for command menu
+set lazyredraw 	" redraw only when you need to, faster macros
+set showmatch  " highlights matching char for [{(
+
+" --searching
+set incsearch " search chars as entered
+set hlsearch " highlight matching
+" turn off search highlight
+nnoremap <leader><space>:nohlsearch<CR>
+
+" changing Cursor color
+" n-v-c normal, visual selection, command mode
+" highlighting for n-v-c
+highlight Cursor guifg=while guibg=black 
+" cursor color for insert
+highlight iCursor guifg=white guibg=steelblue
+" sets cursor scheme for n-v-m
+set guicursor=n-v-c:block-Cursor
+"sets color scheme for i, shape to thick vertical bar
+set guicursor+=i:ver100-iCursor
+" disables blinking for nvm
+set guicursor+=n-v-c:blinkon0
+" increased blink rate
+set guicursor+=i:blinkwait10
+
+
+" spacing with python
+au BufNewFile,BufRead *.py
+  \ set shiftwidth=4 |
+  \ set textwidth=79 |
+  \ set autoindent |
+  \ set fileformat=unix | 
+
+" spacing with webstuffs
+au BufNewFile,BufRead *.js, *.html, *.css
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
+
+" Make trailing whitespace flagged as bad
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"define BadWhitespace before using in a match
+highlight BadWhitespace ctermbg=red guibg=darkred
+
+" Display tabs at the beginning of a line in Python mode as bad.
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+
+
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+"hides .pyc files
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+
+"keep indentation from previous line
+autocmd FileType python set autoindent 
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+"logic for color scheme
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme murphy
+endif
+  call togglebg#map("") 
+" ("<F5>")
+" make code look pretty
+let python_highlight_all=1
+syntax enable
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+	let $t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let $t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+	let $t_SI="\<Esc>]50;CursorShape=1\x7"
+	let $t_EI="\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+
+set clipboard=unnamed
+imap ;; <Esc>
+	      
