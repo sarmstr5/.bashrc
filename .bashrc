@@ -135,3 +135,6 @@ export HISTFILE=~/.bash_eternal_history
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export DISPLAY=:0
+
+# added by Anaconda3 installer
+export PATH="/home/shane/anaconda3/bin:$PATH"
